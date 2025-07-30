@@ -4,38 +4,20 @@ import Register from '../components/Register'
 import Home from '../components/Home'
 import Blogs from '../components/Blogs'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import Header from '../components/header'
 import { useState, useEffect } from 'react'
 import ErrorPage from '../components/404'
 import AddBlog from '../components/AddBlog'
 import ProtectedRoute from '../components/ProtectedRoute'
 import SearchedBlog from '../components/SearchedBlog'
 import { fetchBlogs } from '../services/api';
+import Header from '../components/Header'
 
 
 function App() {
-
   const savedToken = localStorage.getItem("token");
   const [isLoggedIn, setisLoggedIn] = useState(savedToken);
 
   const [blogs, setBlogs] = useState([]);
-    useEffect(() => {
-
-      async function getBlogs() {
-        const blogData = await fetchBlogs();
-      
-        if(!blogData || blogData.error) {
-          console.log(blogData.error || "Error fetching blogs");
-        }else{
-          setBlogs(blogData);
-          console.log(blogData);
-        }
-      }
-    // Call the function to fetch blogs
-    getBlogs();
-  }, []);
-
-
   return (
     <>
       <div className='bg-green-600 text-2xl text-center text-white p-5'>bOOm bLOg</div>

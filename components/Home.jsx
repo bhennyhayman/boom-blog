@@ -1,14 +1,9 @@
-import  {Link}  from 'react-router-dom'
-import Blogs from './Blogs'
-import Header from './header'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import { useEffect, useState } from 'react'
+
+import { useEffect } from 'react'
 import { randomBlogs } from '../services/api'
 
 
-function Home() {
-
-  const [blogs, setBlogs] = useState([]);
+function Home({blogs, setBlogs }) {
   useEffect(()=>{
     async function getRandomBlogs(){
       const response = await randomBlogs();
@@ -16,7 +11,7 @@ function Home() {
       setBlogs(response);
     }
     getRandomBlogs();
-  }, [])
+  }, []);
   return (
     <>
     <div className="flex flex-col justify-center items-center m-1 p-5">

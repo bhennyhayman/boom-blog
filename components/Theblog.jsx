@@ -9,10 +9,8 @@ function Theblog({blogs, setBlogs}) {
 
   const navigate = useNavigate();
 
-
   async function deleteBlog(e){
     const blogId = e.target.dataset.id;
-    console.log(blogId);
 
     // Here you would typically call an API to delete the blog
     try {
@@ -30,7 +28,7 @@ function Theblog({blogs, setBlogs}) {
 
   function searchBlog(e) {
     const searchTerm = e.target.previousSibling.value.toLowerCase();
-    console.log(searchTerm);
+    
     if (!searchTerm) {
       setNotFound(true);
       return;

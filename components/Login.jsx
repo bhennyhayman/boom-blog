@@ -19,7 +19,7 @@ function Login({isLoggedIn,setisLoggedIn}) {
       setLoading(true);
       const data = await loginUser(email, password);
        if(data){
-        console.log(data.message, data.token);
+        console.log(data.message);
          <Navigate to="/" replace/>
          setisLoggedIn(data.token);
          localStorage.setItem("token", data.token);
