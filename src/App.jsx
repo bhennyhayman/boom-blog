@@ -1,0 +1,86 @@
+import './App.css'
+import Login from '../components/Login'
+import Register from '../components/Register'
+import Home from '../components/Home'
+import Blogs from '../components/Blogs'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Header from '../components/header'
+import { useState, useEffect } from 'react'
+import ErrorPage from '../components/404'
+import AddBlog from '../components/AddBlog'
+import ProtectedRoute from '../components/ProtectedRoute'
+import SearchedBlog from '../components/SearchedBlog'
+import { fetchBlogs } from '../services/api';
+
+
+function App() {
+
+  const savedToken = localStorage.getItem("token");
+  const [isLoggedIn, setisLoggedIn] = useState(savedToken);
+
+  const [blogs, setBlogs] = useState([]);
+    useEffect(() => {
+
+      async function getBlogs() {
+        const blogData = await fetchBlogs();
+      
+        if(!blogData || blogData.error) {
+          console.log(blogData.error || "Error fetching blogs");
+        }else{
+          setBlogs(blogData);
+          console.log(blogData);
+        }
+      }
+    // Call the function to fetch blogs
+    getBlogs();
+  }, []);
+
+
+  return (
+    <>
+      <div className='bg-green-600 text-2xl text-center text-white p-5'>bOOm bLOg</div>
+      <Router>
+        {isLoggedIn && <Header isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} />}
+        <Routes>
+          <Route path='/' element={<Login isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} />} />
+          <Route path='/register' element={<Register />} />
+          <Route
+            path='/home'
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <Home blogs={blogs} setBlogs={setBlogs} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/blogs'
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <Blogs blogs={blogs} setBlogs={setBlogs}/>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/addblog'
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <AddBlog blogs={blogs} setBlogs={setBlogs} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/search/:searchTerm'
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <SearchedBlog blogs={blogs} setBlogs={setBlogs} />
+              </ProtectedRoute>
+            }
+          />
+          <Route path='*' element={<ErrorPage isLoggedIn={isLoggedIn} />} />
+        </Routes>
+      </Router>
+    </>
+  )
+}
+
+export default App
