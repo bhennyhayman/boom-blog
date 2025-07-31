@@ -36,15 +36,9 @@ function AddBlog() {
     <>
    <div className="flex justify-around">
       <div className="grid-cols-1 align-middle justify-center p-4 m-3">
-        <div className="flex">
-          <label className="w-20">Enter title: </label>
-          <input id="title" value={title} onChange={(e)=>setTitle(e.target.value)} type="text" className=" border rounded shadow-2xl w-80 h-10 p-3"/>
-        </div>
-        
-
-      <div className="flex">
-          <label className="w-20">Content: </label>
-          <textarea value={content} onChange={(e)=>setContent(e.target.value)} type="text" className="mt-2 border rounded shadow-md w-80 h-50 max-h-100 p-3"/>
+        <div className="flex flex-col justify-center items-center">
+          <input id="title" placeholder="Title here ..." value={title} onChange={(e)=>setTitle(e.target.value)} type="text" className=" border rounded shadow-2xl min-sm:w-100 h-10 p-3 max-sm:w-70 max-sm:text-[13px]"/>
+          <textarea placeholder="Content .." value={content} onChange={(e)=>setContent(e.target.value)} type="text" className="mt-2 border rounded shadow-md p-3 max-sm:w-70 max-sm:h-40 w-100 h-80"/>
       </div>
 
       {error && <div className="flex justify-self-center-safe m-3 text-red-600"> {error}</div>}
@@ -56,7 +50,7 @@ function AddBlog() {
                 <span className="animate-spin h-6 w-6 border-4 border-green-600 border-t-transparent rounded-full inline-block"></span>
               </div>
             )}
-        <button onClick={handleAddBlog} className="p-3 m-5 flex justify-self-center bg-green-600 text-white rounded shadow-green-200 shadow-md cursor-pointer" disabled={loading}>
+        <button onClick={handleAddBlog} className="p-3 m-2 flex justify-self-center bg-green-600 text-white rounded shadow-green-200 shadow-md cursor-pointer max-sm:w-20 max-sm:text-[12px] max-sm:m-1 " disabled={loading}>
               {loading ? "Submitting..." : "Add Blog"}
             </button>
             

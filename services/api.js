@@ -23,7 +23,7 @@ export const loginUser = async(email, password) => {
 
   const data = await response.json();
   if (!response.ok) {
-    throw new Error(data.message || 'Wrong email or password');
+    throw new Error(data.message || "Network Error" );
   }
   return data;
 }
@@ -55,7 +55,7 @@ export const submitBlog = async (title, content) => {
   }
 }
 
-//fetch blogs api
+//fetching personal blogs api
 export const fetchBlogs = async () => {
   const token = localStorage.getItem("token");
   try {
@@ -80,7 +80,7 @@ export const fetchBlogs = async () => {
 }
 
 
-//deleting a blog api
+//deleting personal blog api
 export const removeBlog = async (blogId) => {
   
   const token = localStorage.getItem("token");
@@ -105,6 +105,7 @@ export const removeBlog = async (blogId) => {
 }
 
 
+// getting random blogs api
 export const randomBlogs = async () => {
   const token = localStorage.getItem("token");
   try {
@@ -124,6 +125,30 @@ export const randomBlogs = async () => {
     return await response.json();
   } catch (err) {
     throw new Error(`Error fetching random blogs: ${err.message}`);
+  }
+}
+
+
+//fetching all blogs api
+export const fetchAllBlogs = async () => {
+  const token = localStorage.getItem("token");
+  try {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/blog/blog`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Error fetching all blogs: ${errorText}`);
+    }
+
+    return await response.json();
+  } catch (err) {
+    throw new Error(`Error fetching all blogs: ${err.message}`);
   }
 }
 

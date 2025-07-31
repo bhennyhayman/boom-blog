@@ -4,13 +4,13 @@ import Register from '../components/Register'
 import Home from '../components/Home'
 import Blogs from '../components/Blogs'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import ErrorPage from '../components/404'
 import AddBlog from '../components/AddBlog'
 import ProtectedRoute from '../components/ProtectedRoute'
 import SearchedBlog from '../components/SearchedBlog'
-import { fetchBlogs } from '../services/api';
 import Header from '../components/Header'
+import Blog from '../components/Blog'
 
 
 function App() {
@@ -55,6 +55,14 @@ function App() {
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
                 <SearchedBlog blogs={blogs} setBlogs={setBlogs} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/blog/:id'
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <Blog blogs={blogs} setBlogs={setBlogs} />
               </ProtectedRoute>
             }
           />

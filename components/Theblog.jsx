@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {removeBlog } from '../services/api';
 import {useNavigate, Navigate } from 'react-router-dom';
+import "../src/App.css";
 
 function Theblog({blogs, setBlogs}) {
 
@@ -41,10 +42,10 @@ function Theblog({blogs, setBlogs}) {
   
   return (
     <>
-      <div className='flex flex-col m-4 p-2'>
-        <div className="flex justify-center items-center">
-          <input type="text" placeholder='Search blog' className='border-1 p-2 justify-self-center w-2xs' />
-          <span onClick={searchBlog} className='bg-green-700 cursor-pointer hover:bg-green-300 p-2.5'>🔍</span>
+      <div className='flex flex-col m-5'>
+        <div className="flex justify-center items-center max-sm:m-1 max-sm:p-5 ">
+          <input type="text" placeholder='Search blog' className='border-1 p-3 justify-self-center w-2xs max-sm:w-60' />
+          <span onClick={searchBlog} className='searchBtn'>🔍</span>
         </div>
         <div className='text-center'>Your Blogs ... </div>
         {notFound && <div className='text-red-500 font-bold font-mono flex justify-center items-center'>No blogs with that title found</div>}
