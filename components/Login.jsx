@@ -38,15 +38,12 @@ function Login({isLoggedIn,setisLoggedIn}) {
   if(!isLoggedIn){
     return (
     <>
-    <form className="bg-green-200 rounded-2xl flex-row align-middle justify-self-center pt-5 mt-20 shadow-2xl" >
+    <form className="display flex flex-col justify-center items-center mt-50">
       <div className=" flex justify-center align-middle p-2 mb-2">
-         <label className="text-1xl p-2">Email:</label>
         <input id="email" onChange={(e)=>setEmail(e.target.value)} value={email} type="text" className="  border-b-2 border-blue-300 p-2 w-80 " />  
-
       </div>
 
        <div className=" flex justify-center align-middle p-2 mb-2">
-         <label className="text-1xl p-2">Password:</label>
          <input id="password" value={password} onChange={(e)=>setPassword(e.target.value)} type="password" className=" border-b-2 border-blue-300 p-2 w-80 " />  
       </div>
 
