@@ -3,7 +3,7 @@ import Login from '../components/Login'
 import Register from '../components/Register'
 import Home from '../components/Home'
 import Blogs from '../components/Blogs'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { Routes, Route} from 'react-router-dom'
 import { useState } from 'react'
 import ErrorPage from '../components/404'
 import AddBlog from '../components/AddBlog'
@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <div className="brandName">bOOm bLOg</div>
-      <Router>
+  
         {isLoggedIn && <Header isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} />}
         <Routes>
           <Route path='/' element={<Login isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} />} />
@@ -68,7 +68,6 @@ function App() {
           />
           <Route path='*' element={<ErrorPage isLoggedIn={isLoggedIn} />} />
         </Routes>
-      </Router>
     </>
   )
 }
