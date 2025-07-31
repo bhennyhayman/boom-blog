@@ -1,4 +1,4 @@
-
+import "../src/App.css"
 import { useEffect } from 'react'
 import { randomBlogs } from '../services/api'
 
@@ -14,8 +14,8 @@ function Home({blogs, setBlogs }) {
   }, []);
   return (
     <>
-    <div className="flex flex-col justify-center items-center m-1 p-5">
-     <div><input type="text" placeholder='Search blog' className='border-1 m-2 p-2 align-middle justify-self-center w-2xs' /><span className='bg-grey'>🔍</span></div>
+    <div className="flex justify-center items-center m-1 p-5 ">
+     <div><input type="text" placeholder='Search blog' className='border-1 p-2 min-sm:w-120 justify-self-center max-sm:p-2 w-60' /><span className='searchBtn'>🔍</span></div>
     </div>
    
     <div className='flex flex-col m-2'>

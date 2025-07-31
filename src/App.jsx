@@ -20,7 +20,7 @@ function App() {
   const [blogs, setBlogs] = useState([]);
   return (
     <>
-      <div className='bg-blue-950 text-2xl text-center text-white p-5 items-center'>bOOm bLOg</div>
+      <div className="brandName">bOOm bLOg</div>
       <Router>
         {isLoggedIn && <Header isLoggedIn={isLoggedIn} setisLoggedIn={setisLoggedIn} />}
         <Routes>

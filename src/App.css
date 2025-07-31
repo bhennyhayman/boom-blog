@@ -18,5 +18,13 @@ body{
   .input-field{
     @apply placeholder:text-white border-b-2 border-white p-2 w-80 max-sm:w-60
   }
+
+  .brandName{
+    @apply text-2xl flex justify-center text-white p-5 items-center font-bold
+  }
+
+  .searchBtn{
+    @apply bg-white p-[13px] cursor-pointer hover:bg-blue-100 hover:transition-all
+  }
 }
 

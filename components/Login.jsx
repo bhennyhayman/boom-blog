@@ -38,6 +38,7 @@ function Login({isLoggedIn,setisLoggedIn}) {
   if(!isLoggedIn){
     return (
     <>
+    <hr />
     <form className="display flex flex-col justify-center items-center mt-50">
       <div className=" flex justify-center align-middle p-2 mb-2">
         <input id="email" placeholder='Enter Email' onChange={(e)=>setEmail(e.target.value)} value={email} type="text" className=" input-field"/>  

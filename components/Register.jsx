@@ -42,6 +42,7 @@ function Register() {
   
   return (
     <>
+    <hr />
     <form className="display flex flex-col justify-center items-center mt-50">
       <div className=" flex justify-center align-middle p-2 mb-2">
         <input id="email" placeholder='Enter Email' onChange={(e)=>setNewEmail(e.target.value)} value={newEmail} type="text" className=" input-field" />  
