@@ -40,20 +40,21 @@ function Login({isLoggedIn,setisLoggedIn}) {
     <>
     <form className="display flex flex-col justify-center items-center mt-50">
       <div className=" flex justify-center align-middle p-2 mb-2">
-        <input id="email" onChange={(e)=>setEmail(e.target.value)} value={email} type="text" className="  border-b-2 border-blue-300 p-2 w-80 " />  
+        <input id="email" placeholder='Enter Email' onChange={(e)=>setEmail(e.target.value)} value={email} type="text" className=" input-field"/>  
       </div>
 
        <div className=" flex justify-center align-middle p-2 mb-2">
-         <input id="password" value={password} onChange={(e)=>setPassword(e.target.value)} type="password" className=" border-b-2 border-blue-300 p-2 w-80 " />  
+         <input id="password" placeholder='Enter Password' value={password} onChange={(e)=>setPassword(e.target.value)} type="password" className=" input-field" />  
       </div>
 
       {error && <div className=' rounded ml-10 mr-10 text-white bg-red-500 m-4 p-2 flex justify-center '>{error}</div>}
 
-      <button onClick={handlelogin} type="submit" className="flex justify-self-center bg-blue-600 p-2 rounded text-white mb-5"> {loading ? <div className="flex justify-center m-2">
-                <span className="animate-spin h-6 w-6 border-4 border-white border-t-transparent rounded-full inline-block"></span>
+      <button  onClick={handlelogin} type="submit" className="button"> 
+        {loading ? <div className="flex justify-center m-2">
+                <span className="loading"></span>
               </div>: "Login"} </button>
 
-      <div className="flex justify-self-center underline"><Link to="/register">Click here to register</Link></div>
+      <div className="flex justify-self-center underline"><Link to="/register">Click here to sign up</Link></div>
     </form>
     </>
   )

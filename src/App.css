@@ -6,3 +6,17 @@ body{
   font-family: 'Poppins', sans-serif;
 }
 
+@layer components{
+  .button{
+    @apply flex justify-self-center bg-blue-600 cursor-pointer hover:bg-blue-400 p-2 rounded text-white mb-5
+  }
+
+  .loading{
+    @apply animate-spin h-6 w-6 border-4 border-white border-t-transparent rounded-full inline-block
+  }
+
+  .input-field{
+    @apply placeholder:text-white border-b-2 border-white p-2 w-80 max-sm:w-60
+  }
+}
+

@@ -7,6 +7,7 @@ function Register() {
   const [newPassword, setNewPassword] = useState("");
   const [err, setErr] = useState("");
   const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail);
+  const [loading, setLoading] = useState(false);
   
 
   const handleUser = async(e) => {
@@ -41,24 +42,22 @@ function Register() {
   
   return (
     <>
-    <form className="bg-green-700 text-white rounded-2xl flex-row align-middle justify-self-center pt-5 mt-20 shadow-2xl">
-      <div id="email" className=" flex justify-center align-middle p-2 mb-2">
-         <label className="text-1xl p-2">Email:</label>
-        <input onChange={(e)=>{setNewEmail(e.target.value)}} value={newEmail} type="email" className="  border-b-2 border-blue-300 p-2 w-80" required/>  
-
+    <form className="display flex flex-col justify-center items-center mt-50">
+      <div className=" flex justify-center align-middle p-2 mb-2">
+        <input id="email" placeholder='Enter Email' onChange={(e)=>setNewEmail(e.target.value)} value={newEmail} type="text" className=" input-field" />  
       </div>
 
-       <div id="password" className=" flex justify-center align-middle p-2 mb-2">
-         <label className="text-1xl p-2">Password:</label>
-         <input onChange={(e)=>{setNewPassword(e.target.value)}} value={newPassword} type="password" className="  border-b-2 border-blue-300 p-2 w-80 " />  
+       <div className=" flex justify-center align-middle p-2 mb-2">
+         <input id="password" placeholder='Enter Password' value={newPassword} onChange={(e)=>setNewPassword(e.target.value)} type="password" className="input-field" />  
       </div>
-      
-      {err && <div className=" rounded ml-10 mr-10 text-white bg-red-500 m-4 p-2 flex justify-center ">{err}</div>}
-      <button onClick={handleUser} type="submit" className="flex justify-self-center bg-blue-600 p-2 rounded text-white mb-5"> Register </button>
 
-      
-       <div className="flex justify-self-center underline"><Link to="/">Go back</Link></div>
+      {err && <div className=' rounded ml-10 mr-10 text-white bg-red-500 m-4 p-2 flex justify-center '>{err}</div>}
 
+      <button  onClick={handleUser} type="submit" className="button"> {loading ? <div className="flex justify-center m-2">
+                <span className="loading"></span>
+              </div>: "Register"} </button>
+
+      <div className="flex justify-self-center underline"><Link to="/">Sign In instead</Link></div>
     </form>
     
 
