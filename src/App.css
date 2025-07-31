@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-<<<<<<< HEAD
 body{
   background-color: rgba(0, 0, 0, 0.904);
   color: white;
@@ -28,6 +27,4 @@ body{
     @apply bg-white p-[13px] cursor-pointer hover:bg-blue-100 hover:transition-all
   }
 }
-=======
->>>>>>> origin/main
 
