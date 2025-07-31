@@ -7,11 +7,14 @@ function Theblog({blogs, setBlogs}) {
 
   const [loading, setLoading] = useState(false);
   const [notFound, setNotFound] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
 
   const navigate = useNavigate();
 
   async function deleteBlog(e){
     const blogId = e.target.dataset.id;
+
+    setDeleteId(Number(blogId))
 
     // Here you would typically call an API to delete the blog
     try {
@@ -53,7 +56,8 @@ function Theblog({blogs, setBlogs}) {
           <div key={index} className='p-4 m-2 mb-15 shadow-grey-100 shadow-lg rounded-lg'>
             <h2 className='text-xl font-bold text-blue-600'>Title: {blog.title}</h2>
             <p className='m-2'>{blog.content}</p>
-            <p className='text-sm text-gray-500'>Created at: {new Date(blog.createdAt).toLocaleDateString()} <span key={index} onClick={deleteBlog} data-id={`${blog.id}`} className='float-right text-white bg-red-600 p-1.5 rounded hover:bg-red-400 cursor-pointer'>{loading ? "Deleting" : "Delete"}</span></p>
+            <p className='text-sm text-gray-500'>Created at: {new Date(blog.createdAt).toLocaleDateString()} 
+              <span key={index} onClick={deleteBlog} data-id={`${blog.id}`} className='float-right text-white bg-red-600 p-1.5 rounded hover:bg-red-400 cursor-pointer'> {loading && blog.id === deleteId ? "Deleting": "Delete" }</span></p>
           </div>
         ))}
       </div>
