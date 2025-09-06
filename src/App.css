@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+body{
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  /* background: url('../imgs/homeBg.jpg');
+  background-size: cover;
+  background-position: center; */
+}
+
+input:focus{
+  outline: none;
+}
+
+button:hover{
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+button:active{
+  color: black;
+  transition: all 0.1s ease-in;
+}
+
+
+@layer components{
+  .button{
+    @apply flex justify-self-center bg-blue-600 cursor-pointer hover:bg-blue-400 p-2 rounded text-white mb-5
+  }
+
+  .loading{
+    @apply animate-spin h-6 w-6 border-4 border-white border-t-transparent rounded-full inline-block
+  }
+
+  .input-field{
+    @apply placeholder:text-white border-b-2 border-white p-2 w-80 max-sm:w-60
+  }
+
+  .brandName{
+    @apply text-2xl flex justify-center text-white p-5 items-center font-bold
+  }
+
+  .searchBtn{
+    @apply cursor-pointer text-white
+  }
+}
+
